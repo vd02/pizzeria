@@ -11,12 +11,13 @@ const MealItem = (props) => {
 
   const price = props.price;
 
-  const addToCartHandler = (amount, size) => {
+  const addToCartHandler = (amount, size, topping) => {
     cartCtx.addItem({
       id: props.id,
       name: props.name,
       amount: amount,
       size: size,
+      topping: topping,
       price: props.price,
     });
   };
@@ -36,13 +37,13 @@ const MealItem = (props) => {
             </div>
             <div className={classes.ctr1_5}>
               <div className={classes.price}>Price: ${price}</div>
-              <div className={classes.rating}>Rating: {props.rating}</div>
+              <div className={classes.rating}>Rating: {props.rating} ⭐</div>
               <div
                 className={
                   props.isVeg === true ? `${classes.green}` : `${classes.red}`
                 }
               >
-                {props.isVeg === true ? "Veg" : "Non-veg"}
+                {props.isVeg === true ? "Veg 🟢" : "Non-veg 🔴"}
               </div>
             </div>
           </div>

@@ -8,8 +8,8 @@
 .wrapper_select select {
   color: white;
   font-size: 1.3rem;
-  border: 5px solid #027ea9;
-  padding: 0.3rem;
+  border: 2px solid #f9f9f9;
+  padding: 0.55rem;
   background: #027ea9;
 }
 

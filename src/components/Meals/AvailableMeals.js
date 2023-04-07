@@ -35,6 +35,7 @@ const AvailableMeals = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [httpError, setHttpError] = useState();
   const [sortType, setSortType] = useState("default");
+  // const [toggleVegState, setToggleVegState] = useState("default");
 
   const sortedMeals = useMemo(() => {
     let result = meals;
@@ -48,10 +49,45 @@ const AvailableMeals = () => {
       result = meals.sort((p1, p2) =>
         p1.rating < p2.rating ? 1 : p1.rating > p2.rating ? -1 : 0
       );
+    } else if (sortType === "veg") {
+      result = meals.filter((p1) => p1.isVeg === true);
+    } else if (sortType === "nonveg") {
+      result = meals.filter((p1) => p1.isVeg === false);
     }
     // console.log(result);
     return result;
   }, [meals, sortType]);
+
+  // const showVegMeals = useMemo(() => {
+  //   let result = sortedMeals;
+  //   let result1 = [];
+  //   let result2 = [];
+  //   console.log(result);
+  //   // console.log(sortType.toString());
+  //   if (toggleVegState === "veg") {
+  //     // result1 = [];
+  //     const checkForVeg = function (ele) {
+  //       if (ele.isVeg === "true") {
+  //         result1.push(ele);
+  //       }
+  //     };
+
+  //     result.map(checkForVeg);
+  //     return result1;
+  //   } else if (toggleVegState === "nonveg") {
+  //     // result = [];
+  //     const checkForNonVeg = function (ele) {
+  //       if (ele.isVeg === "false") {
+  //         result2.push(ele);
+  //       }
+  //     };
+
+  //     result.map(checkForNonVeg);
+  //     return result2;
+  //   }
+  //   // console.log(result);
+  //   return result;
+  // }, [sortedMeals, toggleVegState]);
 
   useEffect(() => {
     const fetchMeals = async () => {
@@ -89,6 +125,7 @@ const AvailableMeals = () => {
       setMeals(loadedMeals);
 
       setIsLoading(false);
+      //
       // console.log(meals);
       // sortedMeals(loadedMeals);
     };
@@ -180,10 +217,12 @@ const AvailableMeals = () => {
               className={classes.select}
             >
               <option disabled value="default">
-                Sort by
+                Filter
               </option>
-              <option value="rating">Rating</option>
-              <option value="price">Price</option>
+              <option value="rating">Sort on Rating</option>
+              <option value="price">Sort on Price</option>
+              <option value="veg">Show Veg Pizzas</option>
+              <option value="nonveg">Show Non-Veg Pizzas</option>
             </select>
           </div>
         </div>
