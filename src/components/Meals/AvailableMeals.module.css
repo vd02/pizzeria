@@ -7,6 +7,8 @@
 
 .wrapper_select select {
   color: white;
+  border-radius: 1.2rem;
+
   font-size: 1.3rem;
   border: 2px solid #f9f9f9;
   padding: 0.55rem;
