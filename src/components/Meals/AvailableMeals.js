@@ -91,12 +91,12 @@ const AvailableMeals = () => {
 
   useEffect(() => {
     const fetchMeals = async () => {
-      const response = await fetch(
+      const response1 = await fetch(
         "https://react-food-app-a6e49-default-rtdb.firebaseio.com/meals.json"
       );
-      const response1 = await fetch(
-        "https://run.mocky.io/v3/ec196a02-aaf4-4c91-8f54-21e72f241b68"
-      );
+      // const response1 = await fetch(
+      //   "https://run.mocky.io/v3/ec196a02-aaf4-4c91-8f54-21e72f241b68"
+      // );
 
       if (!response.ok) {
         throw new Error("Something went wrong");
